@@ -16,8 +16,12 @@ function makeSquare(num=16){
     let total = num * num;
     for (let i = 0; i < total; i++ ){
         let div = document.createElement('div')
+        div.addEventListener('click', () => {
+            div.style.backgroundColor = 'black';
+        })
         container.appendChild(div);
     }
 }
 
 makeSquare();
+

@@ -8,3 +8,8 @@
 #container > div {
     border: 1px solid black;
 }
+
+#container > div:hover{
+    background-color: black;
+    opacity: 0.5;
+}
