@@ -21,7 +21,7 @@ function makeGrid(num){
     }
 }
 
-makeGrid(64);
+makeGrid(18);
 
 colorInput = document.getElementById('color');
 colorInput.oninput = (e) => setColor(e.target.value);
