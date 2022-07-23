@@ -27,6 +27,11 @@ function makeGrid(num){
     }
 }
 
+
+colorInput = document.getElementById('color');
+colorInput.oninput = (e) => setColor(e.target.value);
+
+
 function setColor(val){
     colorNow = val;
 }
