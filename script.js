@@ -1,9 +1,8 @@
-// select the container
-let container = document.getElementById("container");
-// create a div element
-let div = document.createElement("div");
-// add div to the container
-container.appendChild(div);
+const container = document.getElementById("container");
+
+const defaultColor = '#000000'
+
+let colorNow = defaultColor;
 
 // making places for divs in container
 container.setAttribute(
@@ -14,14 +13,23 @@ container.setAttribute(
 
 function makeSquare(num=16){
     let total = num * num;
+    const div = document.createElement("div");
     for (let i = 0; i < total; i++ ){
         let div = document.createElement('div')
         div.addEventListener('click', () => {
-            div.style.backgroundColor = 'black';
+            div.style.backgroundColor = colorNow;
         })
         container.appendChild(div);
     }
 }
 
 makeSquare();
+
+colorInput = document.getElementById('color');
+colorInput.oninput = (e) => setColor(e.target.value);
+
+function setColor(val){
+    colorNow = val;
+}
+
 
