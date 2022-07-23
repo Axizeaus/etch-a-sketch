@@ -27,6 +27,7 @@ function makeGrid(num){
     }
 }
 
+makeGrid(18);
 
 colorInput = document.getElementById('color');
 colorInput.oninput = (e) => setColor(e.target.value);
@@ -40,4 +41,3 @@ function changeColor(e){
     e.target.style.backgroundColor = colorNow;
 }
 
-makeGrid(18);
