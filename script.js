@@ -1,10 +1,16 @@
-const container = document.getElementById("container");
 
 const defaultColor = document.getElementById('color').value;
-console.log(defaultColor);
+
 let colorNow = defaultColor;
 
+const colorInput = document.getElementById('color');
+const slider = document.getElementById('slider');
+const sliderVal = document.getElementById('slider-number');
 
+
+colorInput.oninput = (e) => setColor(e.target.value);
+slider.onchange = (e) => updateSlider(e);
+sliderVal.textContent = 'test';
 
 function makeGrid(num){
     container.setAttribute(
@@ -21,12 +27,6 @@ function makeGrid(num){
     }
 }
 
-makeGrid(64);
-
-colorInput = document.getElementById('color');
-colorInput.oninput = (e) => setColor(e.target.value);
-
-
 function setColor(val){
     colorNow = val;
 }
@@ -35,3 +35,4 @@ function changeColor(e){
     e.target.style.backgroundColor = colorNow;
 }
 
+makeGrid(18);
