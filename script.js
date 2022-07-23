@@ -1,35 +1,37 @@
 const container = document.getElementById("container");
 
-const defaultColor = '#000000'
-
+const defaultColor = document.getElementById('color').value;
+console.log(defaultColor);
 let colorNow = defaultColor;
 
-// making places for divs in container
-container.setAttribute(
-  "style",
-  `grid-template-columns:repeat(16, ${container.clientWidth / 16}px);
-  grid-template-rows:repeat(16, ${container.clientHeight / 16}px)`
-);
 
-function makeSquare(num=16){
+
+function makeGrid(num){
+    container.setAttribute(
+        "style",
+        `grid-template-columns:repeat(${num}, ${container.clientWidth / num}px);
+        grid-template-rows:repeat(${num}, ${container.clientHeight / num}px)`
+    );
     let total = num * num;
-    const div = document.createElement("div");
     for (let i = 0; i < total; i++ ){
         let div = document.createElement('div')
-        div.addEventListener('click', () => {
-            div.style.backgroundColor = colorNow;
-        })
+        div.classList.add('grid-item');
+        div.addEventListener('mousedown', changeColor);
         container.appendChild(div);
     }
 }
 
-makeSquare();
+makeGrid(64);
 
 colorInput = document.getElementById('color');
 colorInput.oninput = (e) => setColor(e.target.value);
+
 
 function setColor(val){
     colorNow = val;
 }
 
+function changeColor(e){
+    e.target.style.backgroundColor = colorNow;
+}
 
