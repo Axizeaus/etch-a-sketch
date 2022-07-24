@@ -17,17 +17,17 @@ const reset = document.getElementById('reset');
 // events 
 colorInput.oninput = (e) => setColor(e.target.value);
 slider.onchange = (e) => updateSlider(e);
-eraser.onmousedown = () => setColor(white);
+eraser.onmousedown = () => setColor('white');
 reset.onclick = (e) => resetGrid(e);
-sliderVal.textContent = 'test';
 
 // function calls
 window.onload = () =>{
-    makeGrid(16);
+    makeGrid(defaultNum);
     mode = 'colour'
 }
 
 //functions 
+
 function setColor(val){
     colorNow = val;
 }
