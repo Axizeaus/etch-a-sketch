@@ -17,7 +17,8 @@ const reset = document.getElementById('reset');
 // events 
 colorInput.oninput = (e) => setColor(e.target.value);
 slider.onchange = (e) => updateSlider(e);
-eraser.onmousedown = () => setColor('white');
+eraser.onclick = () => setColor('white');
+eraser.onmousedown = () => changeColorInput();
 reset.onclick = (e) => resetGrid(e);
 
 // function calls
@@ -27,6 +28,10 @@ window.onload = () =>{
 }
 
 //functions 
+
+function changeColorInput(){
+    colorInput.value = '#ffffff'
+}
 
 function setColor(val){
     colorNow = val;
