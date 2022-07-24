@@ -1,16 +1,44 @@
-
+// default values
 const defaultColor = document.getElementById('color').value;
+const defaultMode = 'colour';
+const defaultNum = 18;
 
+// variables 
 let colorNow = defaultColor;
+let mode = defaultMode;
 
+// selectors 
 const colorInput = document.getElementById('color');
 const slider = document.getElementById('slider');
 const sliderVal = document.getElementById('slider-number');
+const eraser = document.getElementById('eraser');
+const reset = document.getElementById('reset');
 
-
+// events 
 colorInput.oninput = (e) => setColor(e.target.value);
 slider.onchange = (e) => updateSlider(e);
+eraser.onmousedown = () => setColor(white);
+reset.onclick = (e) => resetGrid(e);
 sliderVal.textContent = 'test';
+
+// function calls
+window.onload = () =>{
+    makeGrid(16);
+    mode = 'colour'
+}
+
+//functions 
+function setColor(val){
+    colorNow = val;
+}
+
+function setMode(val){
+    mode = val;
+}
+
+function changeColor(e){
+    e.target.style.backgroundColor = colorNow;
+}
 
 function makeGrid(num){
     container.setAttribute(
@@ -27,17 +55,7 @@ function makeGrid(num){
     }
 }
 
-makeGrid(18);
-
-colorInput = document.getElementById('color');
-colorInput.oninput = (e) => setColor(e.target.value);
-
-
-function setColor(val){
-    colorNow = val;
+function resetGrid(){
+    container.innerHTML = '';
+    makeGrid(defaultNum);
 }
-
-function changeColor(e){
-    e.target.style.backgroundColor = colorNow;
-}
-
