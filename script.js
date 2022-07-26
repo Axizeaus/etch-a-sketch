@@ -1,17 +1,15 @@
 // default values
 const defaultColor = document.getElementById("color").value;
-const defaultMode = "colour";
 const defaultNum = 18;
 
 // variables
 let colorNow = defaultColor;
-let mode = defaultMode;
 let size = defaultNum;
 
 // for mouse events
 let mouseDown = false
-document.body.onmousedown = () => (mouseDown = true)
-document.body.onmouseup = () => (mouseDown = false)
+document.getElementById('container').onmousedown = () => (mouseDown = true)
+document.getElementById('container').onmouseup = () => (mouseDown = false)
 
 // selectors
 const colorInput = document.getElementById("color");
@@ -26,7 +24,7 @@ const stopDisco = document.getElementById("stopDisco");
 colorInput.oninput = (e) => setColor(e.target.value);
 slider.onchange = (e) => updateSlider(e.target.value);
 slider.onmousemove = (e) => updateSliderVal(e.target.value);
-eraser.onclick = () => setColor("white");
+eraser.onclick = () => setColor("");
 eraser.onmousedown = () => changeColorInput();
 reset.onclick = (e) => resetGrid(e);
 disco.onclick = () => discoModeInitiate();
@@ -35,7 +33,6 @@ stopDisco.onclick = () => discoModeEnd();
 // function calls
 window.onload = () => {
   makeGrid(defaultNum);
-  mode = "colour";
 };
 
 //functions
@@ -67,6 +64,7 @@ function discoModeEnd() {
 } 
 
 function updateSlider(val) {
+  console.log(val);
   size = val;
   clearGrid();
   makeGrid(val);
@@ -90,10 +88,9 @@ function setMode(val) {
 
 function changeColor(e) {
   if(e.type === 'mouseover' && !mouseDown){return}
-  console.log(e.type);
+
   e.target.classList.remove("inactive");
   e.target.classList.add("active");
-
   e.target.style.backgroundColor = colorNow;
 }
 
