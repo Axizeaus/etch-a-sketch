@@ -6,6 +6,7 @@ const defaultNum = 18;
 // variables
 let colorNow = defaultColor;
 let mode = defaultMode;
+let size = defaultNum;
 
 // selectors
 const colorInput = document.getElementById("color");
@@ -18,7 +19,8 @@ const stopDisco = document.getElementById("stopDisco");
 
 // events
 colorInput.oninput = (e) => setColor(e.target.value);
-slider.onchange = (e) => updateSlider(e);
+slider.onchange = (e) => updateSlider(e.target.value);
+slider.onmousemove = (e) => updateSliderVal(e.target.value);
 eraser.onclick = () => setColor("white");
 eraser.onmousedown = () => changeColorInput();
 reset.onclick = (e) => resetGrid(e);
@@ -41,8 +43,10 @@ function discoModeInitiate() {
     if (check === "active") {
       myInterval = setInterval(() => {
         num = Math.floor(Math.random() * 255);
+        num2 = Math.floor(Math.random() * 255);
+        num3 = Math.floor(Math.random() * 255);
         console.log(num);
-        list[i].style.backgroundColor = `rgb(${255 - num},${num},${num})`;
+        list[i].style.backgroundColor = `rgb(${num},${num2},${num3})`;
         // console.log( '===>' + myInterval);
       }, 100);
     } 
@@ -57,8 +61,14 @@ function discoModeEnd() {
   }
 } 
 
-function updateSlider() {
-  // update slider code here
+function updateSlider(val) {
+  size = val;
+  clearGrid();
+  makeGrid(val);
+}
+
+function updateSliderVal(val){
+  sliderVal.innerHTML = `${val} x ${val}`
 }
 
 function changeColorInput() {
@@ -96,6 +106,10 @@ function makeGrid(num) {
 }
 
 function resetGrid() {
-  container.innerHTML = "";
+  clearGrid();
   makeGrid(defaultNum);
+}
+
+function clearGrid(){
+  container.innerHTML = '';
 }
