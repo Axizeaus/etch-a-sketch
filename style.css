@@ -46,11 +46,17 @@ body{
 input{
     width: 250px;
     height: 150px;
+    box-shadow: 10px 5px 5px green
 }
 
 button{
     width: 250px;
     height: 150px;
     font-size: 2rem;
+    box-shadow: 10px 5px 5px green;
+}
+
+#reset:hover{
+    box-shadow: 10px 5px 5px red;
 }
 
