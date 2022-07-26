@@ -8,6 +8,11 @@ let colorNow = defaultColor;
 let mode = defaultMode;
 let size = defaultNum;
 
+// for mouse events
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
 // selectors
 const colorInput = document.getElementById("color");
 const slider = document.getElementById("slider");
@@ -84,6 +89,8 @@ function setMode(val) {
 }
 
 function changeColor(e) {
+  if(e.type === 'mouseover' && !mouseDown){return}
+  console.log(e.type);
   e.target.classList.remove("inactive");
   e.target.classList.add("active");
 
@@ -100,6 +107,7 @@ function makeGrid(num) {
   for (let i = 0; i < total; i++) {
     let div = document.createElement("div");
     div.classList.add("inactive");
+    div.addEventListener('mouseover', changeColor);
     div.addEventListener("mousedown", changeColor);
     container.appendChild(div);
   }
