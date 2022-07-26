@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Etch a sketch!</h1>
     <div class="functions">
-        <button type="button" value="reset" id="reset">reset</button>
-        <input type="color" name="color" id="color">
-        <button type="button" value="eraser" id="eraser">eraser</button>
-        <button type="button" value="disco" id="disco">disco</button>
-        <button type="button" value="stopDisco" id="stopDisco">stop disco</button>
-        <div>
-            <input type="range" name="slider" id="slider" value="15" min="2" max="64" step="1">
-            <p id="slider-number"></p>
-        </div>
+      <input type="color" name="color" id="color" />
+      <button type="button" value="eraser" id="eraser">eraser</button>
+      <button type="button" value="disco" id="disco">disco</button>
+      <button type="button" value="stopDisco" id="stopDisco">stop disco</button>
+      <div>
+        <input
+          type="range"
+          name="slider"
+          id="slider"
+          value="15"
+          min="2"
+          max="64"
+          step="1"
+        />
+        <p id="slider-number"></p>
+      </div>
     </div>
     <div class="main">
-        <div id="container">
-        </div>
+      <div id="container"></div>
     </div>
-    
-</body>
+
+    <button type="button" value="reset" id="reset">reset</button>
+  </body>
 </html>
